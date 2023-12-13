@@ -33,7 +33,7 @@
             width: 100%;
         }
 
-        .chat-text-color1>span {
+        .chat-text-color1 > span {
             color: black;
             /* ログのテキストを白に変更 */
             background-color: white;
@@ -47,7 +47,7 @@
             text-align: right;
         }
 
-        .chat-text-color2>span {
+        .chat-text-color2 > span {
             color: black;
             /* ログのテキストを白に変更 */
             background-color: lightcyan;
@@ -71,7 +71,6 @@
                 </div>
 
                 <!-- 入力フォーム -->
-                <form action="" method="POST">
                 <form action="{% url 'bot_response' %}" method="POST">
                     {% csrf_token %}
                     <div class="input-group">
@@ -115,18 +114,18 @@
                 data: form.serialize(), // データの情報
                 dataType: 'text', // データのタイプ
             })
-                .done(function (statement) {
-                    createRow_user('あなた : ' + $input.val()); // ユーザーのログを追加
-                    createRow_bot(statement); // ボットのログを追加
-                    $input.val(''); // input内の要素を空にする
+            .done(function (statement) {
+                createRow_user('あなた : ' + $input.val()); // ユーザーのログを追加
+                createRow_bot(statement); // ボットのログを追加
+                $input.val(''); // input内の要素を空にする
 
-                    // ログ枠のスクロールを最後の結果に合わせる
-                    $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
-                })
+                // ログ枠のスクロールを最後の結果に合わせる
+                $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+            })
                 // 送信に失敗した場合
-                .fail(function () {
-                    window.alert('もう一度やり直してください');
-                });
+            .fail(function () {
+                window.alert('もう一度やり直してください');
+            });
         });
     </script>
 
